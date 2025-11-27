@@ -1,5 +1,7 @@
 # art_mode_controller
 Python script consolidated from work by donkthemagicllama
+This script will monitor appletv and frametv to reset art mode when appletv is turned off. Frame TV does not handle this correctly.
+
 Samsung The Frame TV Art Mode forcer - consolidated and rewritten fully in python from the original ruby version created by donkthemagicllama. 
 
 
