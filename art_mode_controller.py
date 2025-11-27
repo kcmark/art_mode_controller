@@ -27,7 +27,7 @@ from samsungtvws import SamsungTVWS
 # --- UTILITY & CONNECTION HELPERS ---
 
 def get_tv_connection(use_auth=True):
-    """Establishes the Samsung TV connection, using auth/port 8002 or default 8001."""
+    """Establishes the Samsung TV connection, using auth/port 8002 or default 8001"""
     if use_auth:
         # Used for power and set_artmode (requires token)
         return SamsungTVWS(TV_IP, port=TV_POWER_PORT, token_file=FRAME_TOKEN_FILE)
@@ -56,7 +56,7 @@ def _run_command(command_parts):
 # --- TV / ATV STATE FUNCTIONS ---
 
 def is_atv_on():
-    """Checks if the Apple TV is on using the atvremote command line tool."""
+    """Checks if the Apple TV is on using the atvremote command line tool"""
     atv_state = 'empty'
     retries = 0
     # Ruby logic: loop until a recognizable state is returned
@@ -71,7 +71,7 @@ def is_atv_on():
     return atv_state == 'PowerState.On'
 
 def get_tv_power_state():
-    """Gets the power state of the Frame TV."""
+    """Gets the power state of the Frame TV"""
     try:
         tv = get_tv_connection(use_auth=True)
         x = tv.rest_device_info()
@@ -81,7 +81,7 @@ def get_tv_power_state():
         return 'error'
 
 def is_tv_standby():
-    """Checks if the TV is in standby mode."""
+    """Checks if the TV is in standby mode"""
     # Note: get_tv_power_state returns 'standby', 'on', or 'off'
     return get_tv_power_state() == 'standby'
 
@@ -110,7 +110,7 @@ def is_art_mode_on():
     return art_mode == 'on'
 
 def set_art_mode_on():
-    """Turns on Art Mode."""
+    """Turns on Art Mode"""
     try:
         tv = get_tv_connection(use_auth=True)
         tv.art().set_artmode('on')
@@ -119,7 +119,7 @@ def set_art_mode_on():
         logging.error(f"Error turning Art Mode ON: {e}")
 
 def toggle_tv_power():
-    """Toggles TV power (from tv_power.py / art_mode_off.py)."""
+    """Toggles TV power"""
     try:
         tv = get_tv_connection(use_auth=True)
         tv.shortcuts().power()
@@ -127,13 +127,13 @@ def toggle_tv_power():
     except Exception as e:
         logging.error(f"Error toggling TV power: {e}")
 
-# --- MAIN LOOP (Translated from art_mode_forcer.rb) ---
+# --- MAIN LOOP ---
 
 def main():
     atv_has_been_on = False
     tv_has_been_sleeping = False
     
-    print("Starting Art Mode Forcer. Monitoring Apple TV status...")
+    print("Starting Art Mode Controller. Monitoring Apple TV status...")
 
     while True:
         # Condition 1: Apple TV is ON and Frame TV is NOT in standby
