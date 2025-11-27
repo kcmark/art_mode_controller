@@ -18,8 +18,11 @@ run **atvremote wizard**, select your Apple TV and follow the prompts, note the 
 You'll need to create a token for your Frame TV using samsung-tv-ws-api
 run python3 and execute the following
 **from samsungtvws import SamsungTVWS**
+
 **tv = SamsungTVWS(host='<frame_ip_address>', port=8002, token_file='frame_token.txt')**
+
 **tv.shortcuts().power()** -- watch your TV, you should be required to accept a security prompt using your Frame remote
+
 **quit()**
 Customize Scripts Below
 
