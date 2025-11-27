@@ -14,7 +14,9 @@ https://github.com/NickWaterton/samsung-tv-ws-api
 You should ensure your Frame TV has a static IP address and that you know what it is.
 
 You'll need set up the Apple TV you plan to use with pyatv
-run **atvremote wizard**, select your Apple TV and follow the prompts, note the MAC address
+run **atvremote wizard**
+select your Apple TV and follow the prompts, note the MAC address
+
 You'll need to create a token for your Frame TV using samsung-tv-ws-api
 run python3 and execute the following
 
