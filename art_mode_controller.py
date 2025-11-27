@@ -12,7 +12,7 @@ urllib3.disable_warnings()
 # Ensure logging is configured
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# --- CONFIGURATION (Based on uploaded files) ---
+# --- CONFIGURATION ---
 # Samsung Frame TV - UPDATE TV_IP and Apple TV MAC address
 TV_IP = '10.0.1.17'
 TV_POWER_PORT = 8002
@@ -53,7 +53,7 @@ def _run_command(command_parts):
         logging.error(f"An unexpected error occurred during command execution: {e}")
         return 'error'
 
-# --- TV / ATV STATE FUNCTIONS (Consolidated from Ruby and Python files) ---
+# --- TV / ATV STATE FUNCTIONS ---
 
 def is_atv_on():
     """Checks if the Apple TV is on using the atvremote command line tool."""
@@ -71,7 +71,7 @@ def is_atv_on():
     return atv_state == 'PowerState.On'
 
 def get_tv_power_state():
-    """Gets the power state of the Frame TV (from tv_status.py)."""
+    """Gets the power state of the Frame TV."""
     try:
         tv = get_tv_connection(use_auth=True)
         x = tv.rest_device_info()
@@ -81,12 +81,12 @@ def get_tv_power_state():
         return 'error'
 
 def is_tv_standby():
-    """Checks if the TV is in standby mode (from tv_status.py logic)."""
+    """Checks if the TV is in standby mode."""
     # Note: get_tv_power_state returns 'standby', 'on', or 'off'
     return get_tv_power_state() == 'standby'
 
 def is_art_mode_on():
-    """Checks if the Frame TV is currently in Art Mode (from get_art_mode.py)."""
+    """Checks if the Frame TV is currently in Art Mode."""
     time.sleep(0.5)
     art_mode = 'empty'
     retries = 0
@@ -110,7 +110,7 @@ def is_art_mode_on():
     return art_mode == 'on'
 
 def set_art_mode_on():
-    """Turns on Art Mode (from art_mode_on.py)."""
+    """Turns on Art Mode."""
     try:
         tv = get_tv_connection(use_auth=True)
         tv.art().set_artmode('on')
