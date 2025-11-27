@@ -1,6 +1,6 @@
 # art_mode_controller
 Python script consolidated from work by donkthemagicllama
-Samsung The Frame TV Art Mode forcer - consolidated and rewritten fully in python from the original ruby version created by donkthemagicllama. THANK YOU!
+Samsung The Frame TV Art Mode forcer - consolidated and rewritten fully in python from the original ruby version created by donkthemagicllama. 
 
 
 Prerequisites
